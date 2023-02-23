@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.patyukov.ligatestwork.facade.Facade;
 import ru.patyukov.ligatestwork.web.constant.WebConstant;
 import ru.patyukov.ligatestwork.web.request.EmployeeRequest;
+import ru.patyukov.ligatestwork.web.request.GadgetRequest;
 import ru.patyukov.ligatestwork.web.response.EmployeeResponse;
+import ru.patyukov.ligatestwork.web.response.GadgetResponse;
 
 @Slf4j
 @RestController
@@ -24,5 +26,14 @@ public class MainController {
         log.info("Контроллер получил запрос на создание работника: {}", employeeRequest);
         EmployeeResponse employeeResponse = facade.createEmployee(employeeRequest);
         return new ResponseEntity<>(employeeResponse, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/{employeeId}/creategadget")
+    public ResponseEntity<GadgetResponse> createGadget(
+            @PathVariable Integer employeeId,
+            @RequestBody GadgetRequest gadgetRequest) {
+        log.info("Контроллер получил запрос на создание гаджета для работника с id = " + employeeId + " : {}", gadgetRequest);
+        GadgetResponse gadgetResponse = facade.createGadget(employeeId, gadgetRequest);
+        return new ResponseEntity<>(gadgetResponse, HttpStatus.CREATED);
     }
 }

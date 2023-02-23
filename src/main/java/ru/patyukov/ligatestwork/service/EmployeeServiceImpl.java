@@ -24,4 +24,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeDto responseEmployeeDto = employeeMapper.employeeToEmployeeDto(responseEmployee);
         return responseEmployeeDto;
     }
+
+    @Override
+    public boolean existsById(Integer employeeId) {
+        boolean isEmployee = employeeRepository.existsById(employeeId);
+        return isEmployee;
+    }
 }
