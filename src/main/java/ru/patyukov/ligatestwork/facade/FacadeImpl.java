@@ -30,9 +30,6 @@ public class FacadeImpl implements Facade {
         log.info("Фасад получил запрос на создание работника: {}", employeeDto);
         EmployeeDto responseEmployeeDto = employeeService.createEmployee(employeeDto);
         EmployeeResponse employeeResponse = employeeMapper.employeeDtoToEmployeeResponse(responseEmployeeDto);
-
-        //todo тут нужно добавить список гаджетов
-
         return employeeResponse;
     }
 
@@ -61,5 +58,14 @@ public class FacadeImpl implements Facade {
     public void deleteEmployee(Integer employeeId) {
         log.info("Фасад получил запрос на удаление работника с id = " + employeeId);
         employeeService.deleteEmployee(employeeId);
+    }
+
+    @Override
+    public EmployeeResponse updateEmployee(Integer employeeId, EmployeeRequest employeeRequest) {
+        EmployeeDto employeeDto = employeeMapper.employeeRequestToEmployeeDto(employeeRequest);
+        log.info("Фасад получил запрос на обновление работника с id = " + employeeId + " : {}", employeeDto);
+        EmployeeDto responseEmployeeDto = employeeService.updateEmployee(employeeId, employeeDto);
+        EmployeeResponse employeeResponse = employeeMapper.employeeDtoToEmployeeResponse(responseEmployeeDto);
+        return employeeResponse;
     }
 }

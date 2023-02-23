@@ -41,4 +41,19 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NotFoundException("Работник с id = " + employeeId + " не найден");
         }
     }
+
+    @Override
+    public EmployeeDto updateEmployee(Integer employeeId, EmployeeDto employeeDto) {
+        Employee employee = employeeMapper.employeeDtoToEmployee(employeeDto);
+        log.info("Сервис получил запрос на обновление работника с id = " + employeeId + " : {}", employee);
+        if (employeeRepository.existsById(employeeId)) {
+            employee.setId(employeeId);
+            Employee responseEmployee = employeeRepository.save(employee);
+            log.info("Репозиторий обновил работника: {}", responseEmployee);
+            EmployeeDto responseEmployeeDto = employeeMapper.employeeToEmployeeDto(responseEmployee);
+            return responseEmployeeDto;
+        } else {
+            throw new NotFoundException("Работник с id = " + employeeId + " не найден");
+        }
+    }
 }

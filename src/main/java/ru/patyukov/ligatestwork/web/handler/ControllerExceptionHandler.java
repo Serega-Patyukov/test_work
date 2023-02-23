@@ -1,5 +1,6 @@
 package ru.patyukov.ligatestwork.web.handler;
 
+import jakarta.validation.ConstraintViolationException;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,14 @@ public class ControllerExceptionHandler {
         log.warn(exc.getMessage());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .body(exc.getMessage());
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity handlerConstraintViolationException(@NonNull final ConstraintViolationException exc) {
+        log.warn(exc.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
                 .body(exc.getMessage());
     }
 }

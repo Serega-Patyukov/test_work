@@ -50,4 +50,13 @@ public class MainController {
         facade.deleteEmployee(employeeId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/update/employee/{employeeId}")
+    public ResponseEntity<EmployeeResponse> updateEmployee(
+            @PathVariable Integer employeeId,
+            @RequestBody EmployeeRequest employeeRequest) {
+        log.info("Контроллер получил запрос на обновление работника с id = " + employeeId + " : {}", employeeRequest);
+        EmployeeResponse employeeResponse = facade.updateEmployee(employeeId, employeeRequest);
+        return new ResponseEntity<>(employeeResponse, HttpStatus.OK);
+    }
 }

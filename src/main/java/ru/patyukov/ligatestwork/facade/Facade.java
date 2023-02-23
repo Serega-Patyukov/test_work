@@ -13,4 +13,6 @@ public interface Facade {
     void deleteGadget(Integer gadgetId);
 
     void deleteEmployee(Integer employeeId);
+
+    EmployeeResponse updateEmployee(Integer employeeId, EmployeeRequest employeeRequest);
 }

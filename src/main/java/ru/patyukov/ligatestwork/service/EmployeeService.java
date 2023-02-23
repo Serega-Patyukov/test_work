@@ -7,4 +7,6 @@ public interface EmployeeService {
     boolean existsById(Integer employeeId);
 
     void deleteEmployee(Integer employeeId);
+
+    EmployeeDto updateEmployee(Integer employeeId, EmployeeDto employeeDto);
 }
