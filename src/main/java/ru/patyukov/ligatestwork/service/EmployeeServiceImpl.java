@@ -3,6 +3,9 @@ package ru.patyukov.ligatestwork.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ru.patyukov.ligatestwork.dto.EmployeeDto;
+import ru.patyukov.ligatestwork.entity.Employee;
+import ru.patyukov.ligatestwork.mapper.EmployeeMapper;
 import ru.patyukov.ligatestwork.repository.EmployeeRepository;
 
 @Slf4j
@@ -10,4 +13,15 @@ import ru.patyukov.ligatestwork.repository.EmployeeRepository;
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
+    private final EmployeeMapper employeeMapper;
+
+    @Override
+    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+        Employee employee = employeeMapper.employeeDtoToEmployee(employeeDto);
+        log.info("Сервис получил запрос на создание работника: {}", employee);
+        Employee responseEmployee = employeeRepository.save(employee);
+        log.info("Репозиторий сохранил работника: {}", responseEmployee);
+        EmployeeDto responseEmployeeDto = employeeMapper.employeeToEmployeeDto(responseEmployee);
+        return responseEmployeeDto;
+    }
 }
