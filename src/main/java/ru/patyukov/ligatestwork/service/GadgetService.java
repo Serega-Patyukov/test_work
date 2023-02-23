@@ -4,4 +4,6 @@ import ru.patyukov.ligatestwork.dto.GadgetDto;
 
 public interface GadgetService {
     GadgetDto createGadget(GadgetDto gadgetDto);
+
+    void deleteGadget(Integer gadgetId);
 }

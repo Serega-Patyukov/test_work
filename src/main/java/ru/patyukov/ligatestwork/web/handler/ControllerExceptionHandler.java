@@ -13,7 +13,7 @@ import ru.patyukov.ligatestwork.exception.NotFoundException;
 public class ControllerExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity handlerNotFoundException(@NonNull final NotFoundException exc) {
-        log.error(exc.getMessage());
+        log.warn(exc.getMessage());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(exc.getMessage());

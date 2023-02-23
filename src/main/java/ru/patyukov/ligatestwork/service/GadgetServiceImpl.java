@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.patyukov.ligatestwork.dto.GadgetDto;
 import ru.patyukov.ligatestwork.entity.Employee;
 import ru.patyukov.ligatestwork.entity.Gadget;
+import ru.patyukov.ligatestwork.exception.NotFoundException;
 import ru.patyukov.ligatestwork.mapper.GadgetMapper;
 import ru.patyukov.ligatestwork.repository.GadgetRepository;
 
@@ -30,5 +31,15 @@ public class GadgetServiceImpl implements GadgetService {
         GadgetDto responseGadgetDto = gadgetMapper.gadgetToGadgetDto(responseGadget);
         responseGadgetDto.setEmployeeId(gadgetDto.getEmployeeId());
         return responseGadgetDto;
+    }
+
+    @Override
+    public void deleteGadget(Integer gadgetId) {
+        log.info("Сервис получил запрос на удаление гаджета с id = " + gadgetId);
+        if (gadgetRepository.existsById(gadgetId)) {
+            gadgetRepository.deleteById(gadgetId);
+        } else {
+            throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
+        }
     }
 }

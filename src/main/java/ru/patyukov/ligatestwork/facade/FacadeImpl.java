@@ -48,6 +48,12 @@ public class FacadeImpl implements Facade {
             return gadgetResponse;
         }
 
-        throw new NotFoundException("Работник с таким id не найден");
+        throw new NotFoundException("Работник с id = " + employeeId + " не найден");
+    }
+
+    @Override
+    public void deleteGadget(Integer gadgetId) {
+        log.info("Фасад получил запрос на удаление гаджета с id = " + gadgetId);
+        gadgetService.deleteGadget(gadgetId);
     }
 }
