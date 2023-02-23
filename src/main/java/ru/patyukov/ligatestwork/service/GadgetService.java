@@ -6,4 +6,6 @@ public interface GadgetService {
     GadgetDto createGadget(GadgetDto gadgetDto);
 
     void deleteGadget(Integer gadgetId);
+
+    GadgetDto updateGadget(Integer gadgetId, GadgetDto gadgetDto);
 }

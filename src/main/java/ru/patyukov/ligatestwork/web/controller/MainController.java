@@ -59,4 +59,14 @@ public class MainController {
         EmployeeResponse employeeResponse = facade.updateEmployee(employeeId, employeeRequest);
         return new ResponseEntity<>(employeeResponse, HttpStatus.OK);
     }
+
+    @PutMapping("/update/gadget/{employeeId}/{gadgetId}")
+    public ResponseEntity<GadgetResponse> updateGadget(
+            @PathVariable Integer employeeId,
+            @PathVariable Integer gadgetId,
+            @RequestBody GadgetRequest gadgetRequest) {
+        log.info("Контроллер получил запрос на обновление гаджета с id = " + gadgetId + " У работника с id = " + employeeId + " : {}", gadgetRequest);
+        GadgetResponse gadgetResponse = facade.updateGadget(employeeId, gadgetId, gadgetRequest);
+        return new ResponseEntity<>(gadgetResponse, HttpStatus.CREATED);
+    }
 }

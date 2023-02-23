@@ -68,4 +68,19 @@ public class FacadeImpl implements Facade {
         EmployeeResponse employeeResponse = employeeMapper.employeeDtoToEmployeeResponse(responseEmployeeDto);
         return employeeResponse;
     }
+
+    @Override
+    public GadgetResponse updateGadget(Integer employeeId, Integer gadgetId, GadgetRequest gadgetRequest) {
+        GadgetDto gadgetDto = gadgetMapper.gadgetRequestToGadgetDto(gadgetRequest);
+        log.info("Фасад получил запрос на обновление гаджета с id = " + gadgetId + " У работника с id = " + employeeId + " : {}", gadgetDto);
+
+        if (employeeService.existsById(employeeId)) {
+            gadgetDto.setEmployeeId(employeeId);
+            GadgetDto responseGadgetDto = gadgetService.updateGadget(gadgetId, gadgetDto);
+            GadgetResponse gadgetResponse = gadgetMapper.gadgetDtoToGadgetResponse(responseGadgetDto);
+            return gadgetResponse;
+        }
+
+        throw new NotFoundException("Работник с id = " + employeeId + " не найден");
+    }
 }

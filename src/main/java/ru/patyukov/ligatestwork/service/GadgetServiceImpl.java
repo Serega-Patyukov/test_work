@@ -42,4 +42,26 @@ public class GadgetServiceImpl implements GadgetService {
             throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
         }
     }
+
+    @Override
+    public GadgetDto updateGadget(Integer gadgetId, GadgetDto gadgetDto) {
+        Gadget gadget = gadgetMapper.gadgetDtoToGadget(gadgetDto);
+        log.info("Сервис получил запрос на обновление гаджета с id = " + gadgetId + " : {}", gadget);
+        if (gadgetRepository.existsById(gadgetId)) {
+
+            Employee employee = new Employee();
+            employee.setId(gadgetDto.getEmployeeId());
+
+            gadget.setEmployee(employee);
+            gadget.setId(gadgetId);
+
+            Gadget responseGadget = gadgetRepository.save(gadget);
+            log.info("Репозиторий обновил гаджет: {}", responseGadget);
+            GadgetDto responseGadgetDto = gadgetMapper.gadgetToGadgetDto(responseGadget);
+            responseGadgetDto.setEmployeeId(gadgetDto.getEmployeeId());
+            return responseGadgetDto;
+        } else {
+            throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
+        }
+    }
 }
