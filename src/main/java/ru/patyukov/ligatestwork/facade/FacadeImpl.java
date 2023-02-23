@@ -56,4 +56,10 @@ public class FacadeImpl implements Facade {
         log.info("Фасад получил запрос на удаление гаджета с id = " + gadgetId);
         gadgetService.deleteGadget(gadgetId);
     }
+
+    @Override
+    public void deleteEmployee(Integer employeeId) {
+        log.info("Фасад получил запрос на удаление работника с id = " + employeeId);
+        employeeService.deleteEmployee(employeeId);
+    }
 }

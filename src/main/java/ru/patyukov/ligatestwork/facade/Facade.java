@@ -11,4 +11,6 @@ public interface Facade {
     GadgetResponse createGadget(Integer employeeId, GadgetRequest gadgetRequest);
 
     void deleteGadget(Integer gadgetId);
+
+    void deleteEmployee(Integer employeeId);
 }

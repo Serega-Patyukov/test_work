@@ -43,4 +43,11 @@ public class MainController {
         facade.deleteGadget(gadgetId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/employee/{employeeId}")
+    public ResponseEntity deleteEmployee(@PathVariable Integer employeeId) {
+        log.info("Контроллер получил запрос на удаление работника с id = " + employeeId);
+        facade.deleteEmployee(employeeId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
