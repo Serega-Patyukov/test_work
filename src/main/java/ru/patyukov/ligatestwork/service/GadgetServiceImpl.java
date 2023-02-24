@@ -73,9 +73,26 @@ public class GadgetServiceImpl implements GadgetService {
         List<Gadget> gadgets = gadgetRepository.findAllByEmployeeId(employeeId);
 
         List<GadgetDto> gadgetDtos = gadgets.stream()
-                .map(gadget -> gadgetMapper.gadgetToGadgetDto(gadget))
+                .map(gadget -> {
+                    GadgetDto responseGadgetDto = gadgetMapper.gadgetToGadgetDto(gadget);
+                    responseGadgetDto.setEmployeeId(gadget.getEmployee().getId());
+                    return responseGadgetDto;
+                })
                 .toList();
 
         return gadgetDtos;
+    }
+
+    @Override
+    public GadgetDto getGadgetById(Integer gadgetId) {
+        log.info("Сервис получил запрос на получение гаджета с id = " + gadgetId);
+        if (gadgetRepository.existsById(gadgetId)) {
+            Gadget responseGadget = gadgetRepository.findById(gadgetId).get();
+            GadgetDto responseGadgetDto = gadgetMapper.gadgetToGadgetDto(responseGadget);
+            responseGadgetDto.setEmployeeId(responseGadget.getEmployee().getId());
+            return responseGadgetDto;
+        } else {
+            throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
+        }
     }
 }

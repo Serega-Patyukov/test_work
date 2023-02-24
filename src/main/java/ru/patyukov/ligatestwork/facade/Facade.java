@@ -23,4 +23,6 @@ public interface Facade {
     EmployeeResponse getEmployeeById(Integer employeeId);
 
     List<EmployeeResponse> getEmployeeAll();
+
+    GadgetResponse getGadgetById(Integer gadgetId);
 }

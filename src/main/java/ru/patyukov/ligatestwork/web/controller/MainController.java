@@ -85,4 +85,11 @@ public class MainController {
         List<EmployeeResponse> employeeResponses = facade.getEmployeeAll();
         return new ResponseEntity<>(employeeResponses, HttpStatus.OK);
     }
+
+    @GetMapping("/get/gadget/gadgetid/{gadgetId}")
+    public ResponseEntity<GadgetResponse> getGadgetById(@PathVariable Integer gadgetId) {
+        log.info("Контроллер получил запрос на получение гаджета с id = " + gadgetId);
+        GadgetResponse gadgetResponse = facade.getGadgetById(gadgetId);
+        return new ResponseEntity<>(gadgetResponse, HttpStatus.OK);
+    }
 }

@@ -122,4 +122,12 @@ public class FacadeImpl implements Facade {
 
         return employeeResponses;
     }
+
+    @Override
+    public GadgetResponse getGadgetById(Integer gadgetId) {
+        log.info("Фасад получил запрос на получение гаджета с id = " + gadgetId);
+        GadgetDto responseGadgetDto = gadgetService.getGadgetById(gadgetId);
+        GadgetResponse gadgetResponse = gadgetMapper.gadgetDtoToGadgetResponse(responseGadgetDto);
+        return gadgetResponse;
+    }
 }
