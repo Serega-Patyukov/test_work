@@ -95,4 +95,20 @@ public class GadgetServiceImpl implements GadgetService {
             throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
         }
     }
+
+    @Override
+    public List<GadgetDto> getGadgetAll() {
+        log.info("Сервис получил запрос на получение всех гаджетов");
+        List<Gadget> gadgets = gadgetRepository.findAll();
+
+        List<GadgetDto> gadgetDtos = gadgets.stream()
+                .map(gadget -> {
+                    GadgetDto responseGadgetDto = gadgetMapper.gadgetToGadgetDto(gadget);
+                    responseGadgetDto.setEmployeeId(gadget.getEmployee().getId());
+                    return responseGadgetDto;
+                })
+                .toList();
+
+        return gadgetDtos;
+    }
 }

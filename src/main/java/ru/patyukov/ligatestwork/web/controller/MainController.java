@@ -92,4 +92,11 @@ public class MainController {
         GadgetResponse gadgetResponse = facade.getGadgetById(gadgetId);
         return new ResponseEntity<>(gadgetResponse, HttpStatus.OK);
     }
+
+    @GetMapping("/get/gadget/all")
+    public ResponseEntity<List<GadgetResponse>> getGadgetAll() {
+        log.info("Контроллер получил запрос на получение всех гаджетов");
+        List<GadgetResponse> gadgetResponses = facade.getGadgetAll();
+        return new ResponseEntity<>(gadgetResponses, HttpStatus.OK);
+    }
 }

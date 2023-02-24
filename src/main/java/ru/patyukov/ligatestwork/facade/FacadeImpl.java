@@ -130,4 +130,16 @@ public class FacadeImpl implements Facade {
         GadgetResponse gadgetResponse = gadgetMapper.gadgetDtoToGadgetResponse(responseGadgetDto);
         return gadgetResponse;
     }
+
+    @Override
+    public List<GadgetResponse> getGadgetAll() {
+        log.info("Фасад получил запрос на получение всех гаджетов");
+        List<GadgetDto> gadgetDtos = gadgetService.getGadgetAll();
+
+        List<GadgetResponse> gadgetResponses = gadgetDtos.stream()
+                .map(gadgetDto -> gadgetMapper.gadgetDtoToGadgetResponse(gadgetDto))
+                .toList();
+
+        return gadgetResponses;
+    }
 }

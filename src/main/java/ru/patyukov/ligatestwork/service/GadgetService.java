@@ -14,4 +14,6 @@ public interface GadgetService {
     List<GadgetDto> findAllByEmployeeId(Integer employeeId);
 
     GadgetDto getGadgetById(Integer gadgetId);
+
+    List<GadgetDto> getGadgetAll();
 }
