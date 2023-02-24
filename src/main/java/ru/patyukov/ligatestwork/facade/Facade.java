@@ -17,4 +17,6 @@ public interface Facade {
     EmployeeResponse updateEmployee(Integer employeeId, EmployeeRequest employeeRequest);
 
     GadgetResponse updateGadget(Integer employeeId, Integer gadgetId, GadgetRequest gadgetRequest);
+
+    EmployeeResponse getEmployeeById(Integer employeeId);
 }

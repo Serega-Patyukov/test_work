@@ -56,4 +56,13 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NotFoundException("Работник с id = " + employeeId + " не найден");
         }
     }
+
+    @Override
+    public EmployeeDto getEmployeeById(Integer employeeId) {
+        log.info("Сервис получил запрос на получение работника с id = " + employeeId);
+        Employee responseEmployee = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new NotFoundException("Работник с id = " + employeeId + " не найден"));
+        EmployeeDto responseEmployeeDto = employeeMapper.employeeToEmployeeDto(responseEmployee);
+        return responseEmployeeDto;
+    }
 }

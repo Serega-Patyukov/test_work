@@ -10,6 +10,8 @@ import ru.patyukov.ligatestwork.exception.NotFoundException;
 import ru.patyukov.ligatestwork.mapper.GadgetMapper;
 import ru.patyukov.ligatestwork.repository.GadgetRepository;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -63,5 +65,17 @@ public class GadgetServiceImpl implements GadgetService {
         } else {
             throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
         }
+    }
+
+    @Override
+    public List<GadgetDto> findAllByEmployeeId(Integer employeeId) {
+        log.info("Сервис получил запрос на получение всех гаджетов у работника с id = " + employeeId);
+        List<Gadget> gadgets = gadgetRepository.findAllByEmployeeId(employeeId);
+
+        List<GadgetDto> gadgetDtos = gadgets.stream()
+                .map(gadget -> gadgetMapper.gadgetToGadgetDto(gadget))
+                .toList();
+
+        return gadgetDtos;
     }
 }

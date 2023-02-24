@@ -28,7 +28,7 @@ public class MainController {
         return new ResponseEntity<>(employeeResponse, HttpStatus.CREATED);
     }
 
-    @PostMapping("/create/gadget/{employeeId}")
+    @PostMapping("/create/gadget/employeeid/{employeeId}")
     public ResponseEntity<GadgetResponse> createGadget(
             @PathVariable Integer employeeId,
             @RequestBody GadgetRequest gadgetRequest) {
@@ -37,21 +37,21 @@ public class MainController {
         return new ResponseEntity<>(gadgetResponse, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/gadget/{gadgetId}")
+    @DeleteMapping("/delete/gadget/gadgetid/{gadgetId}")
     public ResponseEntity deleteGadget(@PathVariable Integer gadgetId) {
         log.info("Контроллер получил запрос на удаление гаджета с id = " + gadgetId);
         facade.deleteGadget(gadgetId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/employee/{employeeId}")
+    @DeleteMapping("/delete/employee/employeeid/{employeeId}")
     public ResponseEntity deleteEmployee(@PathVariable Integer employeeId) {
         log.info("Контроллер получил запрос на удаление работника с id = " + employeeId);
         facade.deleteEmployee(employeeId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/update/employee/{employeeId}")
+    @PutMapping("/update/employee/employeeid/{employeeId}")
     public ResponseEntity<EmployeeResponse> updateEmployee(
             @PathVariable Integer employeeId,
             @RequestBody EmployeeRequest employeeRequest) {
@@ -60,7 +60,7 @@ public class MainController {
         return new ResponseEntity<>(employeeResponse, HttpStatus.OK);
     }
 
-    @PutMapping("/update/gadget/{employeeId}/{gadgetId}")
+    @PutMapping("/update/gadget/employeeid/{employeeId}/gadgetid/{gadgetId}")
     public ResponseEntity<GadgetResponse> updateGadget(
             @PathVariable Integer employeeId,
             @PathVariable Integer gadgetId,
@@ -68,5 +68,12 @@ public class MainController {
         log.info("Контроллер получил запрос на обновление гаджета с id = " + gadgetId + " У работника с id = " + employeeId + " : {}", gadgetRequest);
         GadgetResponse gadgetResponse = facade.updateGadget(employeeId, gadgetId, gadgetRequest);
         return new ResponseEntity<>(gadgetResponse, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/get/employee/employeeid/{employeeId}")
+    public ResponseEntity<EmployeeResponse> getEmployeeById(@PathVariable Integer employeeId) {
+        log.info("Контроллер получил запрос на получение работника с id = " + employeeId);
+        EmployeeResponse employeeResponse = facade.getEmployeeById(employeeId);
+        return new ResponseEntity<>(employeeResponse, HttpStatus.OK);
     }
 }

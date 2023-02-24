@@ -15,6 +15,8 @@ import ru.patyukov.ligatestwork.web.request.GadgetRequest;
 import ru.patyukov.ligatestwork.web.response.EmployeeResponse;
 import ru.patyukov.ligatestwork.web.response.GadgetResponse;
 
+import java.util.List;
+
 @Slf4j
 @Component
 @AllArgsConstructor
@@ -82,5 +84,22 @@ public class FacadeImpl implements Facade {
         }
 
         throw new NotFoundException("Работник с id = " + employeeId + " не найден");
+    }
+
+    @Override
+    public EmployeeResponse getEmployeeById(Integer employeeId) {
+        log.info("Фасад получил запрос на получение работника с id = " + employeeId);
+        EmployeeDto responseEmployeeDto = employeeService.getEmployeeById(employeeId);
+        EmployeeResponse employeeResponse = employeeMapper.employeeDtoToEmployeeResponse(responseEmployeeDto);
+
+        List<GadgetDto> gadgetDtos = gadgetService.findAllByEmployeeId(employeeId);
+
+        List<GadgetResponse> gadgetResponses = gadgetDtos.stream()
+                .map(gadgetDto -> gadgetMapper.gadgetDtoToGadgetResponse(gadgetDto))
+                .toList();
+
+        employeeResponse.setGadgets(gadgetResponses);
+
+        return employeeResponse;
     }
 }
