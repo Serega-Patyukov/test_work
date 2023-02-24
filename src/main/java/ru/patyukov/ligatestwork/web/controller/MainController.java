@@ -1,5 +1,8 @@
 package ru.patyukov.ligatestwork.web.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -23,6 +26,10 @@ import java.util.List;
 public class MainController {
     private final Facade facade;
 
+    @Operation(summary = "Create employee")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201")
+    })
     @PostMapping("/create/employee")
     public ResponseEntity<EmployeeResponse> createEmployee(@RequestBody EmployeeRequest employeeRequest) {
         log.info("Контроллер получил запрос на создание работника: {}", employeeRequest);
@@ -30,6 +37,10 @@ public class MainController {
         return new ResponseEntity<>(employeeResponse, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Create gadget")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201")
+    })
     @PostMapping("/create/gadget/employeeid/{employeeId}")
     public ResponseEntity<GadgetResponse> createGadget(
             @PathVariable Integer employeeId,
@@ -39,6 +50,7 @@ public class MainController {
         return new ResponseEntity<>(gadgetResponse, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Delete gadget")
     @DeleteMapping("/delete/gadget/gadgetid/{gadgetId}")
     public ResponseEntity deleteGadget(@PathVariable Integer gadgetId) {
         log.info("Контроллер получил запрос на удаление гаджета с id = " + gadgetId);
@@ -46,6 +58,7 @@ public class MainController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @Operation(summary = "Delete employee")
     @DeleteMapping("/delete/employee/employeeid/{employeeId}")
     public ResponseEntity deleteEmployee(@PathVariable Integer employeeId) {
         log.info("Контроллер получил запрос на удаление работника с id = " + employeeId);
@@ -53,6 +66,7 @@ public class MainController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @Operation(summary = "Update employee")
     @PutMapping("/update/employee/employeeid/{employeeId}")
     public ResponseEntity<EmployeeResponse> updateEmployee(
             @PathVariable Integer employeeId,
@@ -62,6 +76,7 @@ public class MainController {
         return new ResponseEntity<>(employeeResponse, HttpStatus.OK);
     }
 
+    @Operation(summary = "Update gadget")
     @PutMapping("/update/gadget/employeeid/{employeeId}/gadgetid/{gadgetId}")
     public ResponseEntity<GadgetResponse> updateGadget(
             @PathVariable Integer employeeId,
@@ -72,6 +87,7 @@ public class MainController {
         return new ResponseEntity<>(gadgetResponse, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Get employee")
     @GetMapping("/get/employee/employeeid/{employeeId}")
     public ResponseEntity<EmployeeResponse> getEmployeeById(@PathVariable Integer employeeId) {
         log.info("Контроллер получил запрос на получение работника с id = " + employeeId);
@@ -79,6 +95,7 @@ public class MainController {
         return new ResponseEntity<>(employeeResponse, HttpStatus.OK);
     }
 
+    @Operation(summary = "Get employee all")
     @GetMapping("/get/employee/all")
     public ResponseEntity<List<EmployeeResponse>> getEmployeeAll() {
         log.info("Контроллер получил запрос на получение всех работников");
@@ -86,6 +103,7 @@ public class MainController {
         return new ResponseEntity<>(employeeResponses, HttpStatus.OK);
     }
 
+    @Operation(summary = "Get gadget")
     @GetMapping("/get/gadget/gadgetid/{gadgetId}")
     public ResponseEntity<GadgetResponse> getGadgetById(@PathVariable Integer gadgetId) {
         log.info("Контроллер получил запрос на получение гаджета с id = " + gadgetId);
@@ -93,6 +111,7 @@ public class MainController {
         return new ResponseEntity<>(gadgetResponse, HttpStatus.OK);
     }
 
+    @Operation(summary = "Get gadget all")
     @GetMapping("/get/gadget/all")
     public ResponseEntity<List<GadgetResponse>> getGadgetAll() {
         log.info("Контроллер получил запрос на получение всех гаджетов");
