@@ -13,6 +13,8 @@ import ru.patyukov.ligatestwork.web.request.GadgetRequest;
 import ru.patyukov.ligatestwork.web.response.EmployeeResponse;
 import ru.patyukov.ligatestwork.web.response.GadgetResponse;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @AllArgsConstructor
@@ -75,5 +77,12 @@ public class MainController {
         log.info("Контроллер получил запрос на получение работника с id = " + employeeId);
         EmployeeResponse employeeResponse = facade.getEmployeeById(employeeId);
         return new ResponseEntity<>(employeeResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/employee/all")
+    public ResponseEntity<List<EmployeeResponse>> getEmployeeAll() {
+        log.info("Контроллер получил запрос на получение всех работников");
+        List<EmployeeResponse> employeeResponses = facade.getEmployeeAll();
+        return new ResponseEntity<>(employeeResponses, HttpStatus.OK);
     }
 }

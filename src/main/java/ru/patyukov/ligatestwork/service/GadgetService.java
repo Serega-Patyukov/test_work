@@ -1,7 +1,6 @@
 package ru.patyukov.ligatestwork.service;
 
 import ru.patyukov.ligatestwork.dto.GadgetDto;
-import ru.patyukov.ligatestwork.entity.Gadget;
 
 import java.util.List;
 

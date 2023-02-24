@@ -5,6 +5,8 @@ import ru.patyukov.ligatestwork.web.request.GadgetRequest;
 import ru.patyukov.ligatestwork.web.response.EmployeeResponse;
 import ru.patyukov.ligatestwork.web.response.GadgetResponse;
 
+import java.util.List;
+
 public interface Facade {
     EmployeeResponse createEmployee(EmployeeRequest employeeRequest);
 
@@ -19,4 +21,6 @@ public interface Facade {
     GadgetResponse updateGadget(Integer employeeId, Integer gadgetId, GadgetRequest gadgetRequest);
 
     EmployeeResponse getEmployeeById(Integer employeeId);
+
+    List<EmployeeResponse> getEmployeeAll();
 }

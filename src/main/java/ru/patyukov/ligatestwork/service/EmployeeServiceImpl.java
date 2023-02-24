@@ -9,6 +9,8 @@ import ru.patyukov.ligatestwork.exception.NotFoundException;
 import ru.patyukov.ligatestwork.mapper.EmployeeMapper;
 import ru.patyukov.ligatestwork.repository.EmployeeRepository;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -64,5 +66,17 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(() -> new NotFoundException("Работник с id = " + employeeId + " не найден"));
         EmployeeDto responseEmployeeDto = employeeMapper.employeeToEmployeeDto(responseEmployee);
         return responseEmployeeDto;
+    }
+
+    @Override
+    public List<EmployeeDto> getEmployeeAll() {
+        log.info("Сервис получил запрос на получение всех работников");
+        List<Employee> employees = employeeRepository.findAll();
+
+        List<EmployeeDto> employeeDtos = employees.stream()
+                .map(employee -> employeeMapper.employeeToEmployeeDto(employee))
+                .toList();
+
+        return employeeDtos;
     }
 }

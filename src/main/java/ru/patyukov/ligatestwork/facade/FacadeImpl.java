@@ -102,4 +102,24 @@ public class FacadeImpl implements Facade {
 
         return employeeResponse;
     }
+
+    @Override
+    public List<EmployeeResponse> getEmployeeAll() {
+        log.info("Фасад получил запрос на получение всех работников");
+        List<EmployeeDto> employeeDtos = employeeService.getEmployeeAll();
+
+        List<EmployeeResponse> employeeResponses = employeeDtos.stream()
+                .map(employeeDto -> employeeMapper.employeeDtoToEmployeeResponse(employeeDto))
+                .map(employeeResponse -> {
+                    List<GadgetDto> gadgetDtos = gadgetService.findAllByEmployeeId(employeeResponse.getId());
+                    List<GadgetResponse> gadgetResponses = gadgetDtos.stream()
+                            .map(gadgetDto -> gadgetMapper.gadgetDtoToGadgetResponse(gadgetDto))
+                            .toList();
+                    employeeResponse.setGadgets(gadgetResponses);
+                    return employeeResponse;
+                })
+                .toList();
+
+        return employeeResponses;
+    }
 }
