@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.patyukov.ligatestwork.dto.EmployeeDto;
 import ru.patyukov.ligatestwork.entity.Employee;
@@ -121,6 +120,7 @@ class EmployeeServiceImplTest {
 
         //then
 
+        employeeService.deleteEmployee(employeeId);
     }
 
     @Test
