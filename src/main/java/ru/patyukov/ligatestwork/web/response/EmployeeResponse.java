@@ -2,6 +2,7 @@ package ru.patyukov.ligatestwork.web.response;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -12,5 +13,5 @@ public class EmployeeResponse {
     private String surname;
     private String phone;
     private String email;
-    private List<GadgetResponse> gadgets;
+    private List<GadgetResponse> gadgets = new ArrayList<>();
 }

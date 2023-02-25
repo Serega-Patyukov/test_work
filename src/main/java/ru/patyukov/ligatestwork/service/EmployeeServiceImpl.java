@@ -21,9 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
         Employee employee = employeeMapper.employeeDtoToEmployee(employeeDto);
-        log.info("Сервис получил запрос на создание работника: {}", employee);
+        log.info("Сервис получил запрос на создание сотрудника: {}", employee);
         Employee responseEmployee = employeeRepository.save(employee);
-        log.info("Репозиторий сохранил работника: {}", responseEmployee);
+        log.info("Репозиторий сохранил сотрудника: {}", responseEmployee);
         EmployeeDto responseEmployeeDto = employeeMapper.employeeToEmployeeDto(responseEmployee);
         return responseEmployeeDto;
     }
@@ -36,41 +36,41 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployee(Integer employeeId) {
-        log.info("Сервис получил запрос на удаление работника с id = " + employeeId);
+        log.info("Сервис получил запрос на удаление сотрудника с id = " + employeeId);
         if (employeeRepository.existsById(employeeId)) {
             employeeRepository.deleteById(employeeId);
         } else {
-            throw new NotFoundException("Работник с id = " + employeeId + " не найден");
+            throw new NotFoundException("Сотрудник с id = " + employeeId + " не найден");
         }
     }
 
     @Override
     public EmployeeDto updateEmployee(Integer employeeId, EmployeeDto employeeDto) {
         Employee employee = employeeMapper.employeeDtoToEmployee(employeeDto);
-        log.info("Сервис получил запрос на обновление работника с id = " + employeeId + " : {}", employee);
+        log.info("Сервис получил запрос на обновление сотрудника с id = " + employeeId + " : {}", employee);
         if (employeeRepository.existsById(employeeId)) {
             employee.setId(employeeId);
             Employee responseEmployee = employeeRepository.save(employee);
-            log.info("Репозиторий обновил работника: {}", responseEmployee);
+            log.info("Репозиторий обновил сотрудника: {}", responseEmployee);
             EmployeeDto responseEmployeeDto = employeeMapper.employeeToEmployeeDto(responseEmployee);
             return responseEmployeeDto;
         } else {
-            throw new NotFoundException("Работник с id = " + employeeId + " не найден");
+            throw new NotFoundException("Сотрудник с id = " + employeeId + " не найден");
         }
     }
 
     @Override
     public EmployeeDto getEmployeeById(Integer employeeId) {
-        log.info("Сервис получил запрос на получение работника с id = " + employeeId);
+        log.info("Сервис получил запрос на получение сотрудника с id = " + employeeId);
         Employee responseEmployee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new NotFoundException("Работник с id = " + employeeId + " не найден"));
+                .orElseThrow(() -> new NotFoundException("Сотрудник с id = " + employeeId + " не найден"));
         EmployeeDto responseEmployeeDto = employeeMapper.employeeToEmployeeDto(responseEmployee);
         return responseEmployeeDto;
     }
 
     @Override
     public List<EmployeeDto> getEmployeeAll() {
-        log.info("Сервис получил запрос на получение всех работников");
+        log.info("Сервис получил запрос на получение всех сотрудников");
         List<Employee> employees = employeeRepository.findAll();
 
         List<EmployeeDto> employeeDtos = employees.stream()

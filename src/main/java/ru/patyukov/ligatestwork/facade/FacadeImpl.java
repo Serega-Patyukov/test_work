@@ -29,7 +29,7 @@ public class FacadeImpl implements Facade {
     @Override
     public EmployeeResponse createEmployee(EmployeeRequest employeeRequest) {
         EmployeeDto employeeDto = employeeMapper.employeeRequestToEmployeeDto(employeeRequest);
-        log.info("Фасад получил запрос на создание работника: {}", employeeDto);
+        log.info("Фасад получил запрос на создание сотрудника: {}", employeeDto);
         EmployeeDto responseEmployeeDto = employeeService.createEmployee(employeeDto);
         EmployeeResponse employeeResponse = employeeMapper.employeeDtoToEmployeeResponse(responseEmployeeDto);
         return employeeResponse;
@@ -38,7 +38,7 @@ public class FacadeImpl implements Facade {
     @Override
     public GadgetResponse createGadget(Integer employeeId, GadgetRequest gadgetRequest) {
         GadgetDto gadgetDto = gadgetMapper.gadgetRequestToGadgetDto(gadgetRequest);
-        log.info("Фасад получил запрос на создание гаджета для работника с id = " + employeeId + " : {}", gadgetDto);
+        log.info("Фасад получил запрос на создание гаджета для сотрудника с id = " + employeeId + " : {}", gadgetDto);
 
         if (employeeService.existsById(employeeId)) {
             gadgetDto.setEmployeeId(employeeId);
@@ -47,7 +47,7 @@ public class FacadeImpl implements Facade {
             return gadgetResponse;
         }
 
-        throw new NotFoundException("Работник с id = " + employeeId + " не найден");
+        throw new NotFoundException("Сотрудник с id = " + employeeId + " не найден");
     }
 
     @Override
@@ -58,14 +58,14 @@ public class FacadeImpl implements Facade {
 
     @Override
     public void deleteEmployee(Integer employeeId) {
-        log.info("Фасад получил запрос на удаление работника с id = " + employeeId);
+        log.info("Фасад получил запрос на удаление сотрудника с id = " + employeeId);
         employeeService.deleteEmployee(employeeId);
     }
 
     @Override
     public EmployeeResponse updateEmployee(Integer employeeId, EmployeeRequest employeeRequest) {
         EmployeeDto employeeDto = employeeMapper.employeeRequestToEmployeeDto(employeeRequest);
-        log.info("Фасад получил запрос на обновление работника с id = " + employeeId + " : {}", employeeDto);
+        log.info("Фасад получил запрос на обновление сотрудника с id = " + employeeId + " : {}", employeeDto);
         EmployeeDto responseEmployeeDto = employeeService.updateEmployee(employeeId, employeeDto);
         EmployeeResponse employeeResponse = employeeMapper.employeeDtoToEmployeeResponse(responseEmployeeDto);
         return employeeResponse;
@@ -74,7 +74,7 @@ public class FacadeImpl implements Facade {
     @Override
     public GadgetResponse updateGadget(Integer employeeId, Integer gadgetId, GadgetRequest gadgetRequest) {
         GadgetDto gadgetDto = gadgetMapper.gadgetRequestToGadgetDto(gadgetRequest);
-        log.info("Фасад получил запрос на обновление гаджета с id = " + gadgetId + " У работника с id = " + employeeId + " : {}", gadgetDto);
+        log.info("Фасад получил запрос на обновление гаджета с id = " + gadgetId + " У сотрудника с id = " + employeeId + " : {}", gadgetDto);
 
         if (employeeService.existsById(employeeId)) {
             gadgetDto.setEmployeeId(employeeId);
@@ -83,12 +83,12 @@ public class FacadeImpl implements Facade {
             return gadgetResponse;
         }
 
-        throw new NotFoundException("Работник с id = " + employeeId + " не найден");
+        throw new NotFoundException("Сотрудник с id = " + employeeId + " не найден");
     }
 
     @Override
     public EmployeeResponse getEmployeeById(Integer employeeId) {
-        log.info("Фасад получил запрос на получение работника с id = " + employeeId);
+        log.info("Фасад получил запрос на получение сотрудника с id = " + employeeId);
         EmployeeDto responseEmployeeDto = employeeService.getEmployeeById(employeeId);
         EmployeeResponse employeeResponse = employeeMapper.employeeDtoToEmployeeResponse(responseEmployeeDto);
 
@@ -105,7 +105,7 @@ public class FacadeImpl implements Facade {
 
     @Override
     public List<EmployeeResponse> getEmployeeAll() {
-        log.info("Фасад получил запрос на получение всех работников");
+        log.info("Фасад получил запрос на получение всех сотрудников");
         List<EmployeeDto> employeeDtos = employeeService.getEmployeeAll();
 
         List<EmployeeResponse> employeeResponses = employeeDtos.stream()
