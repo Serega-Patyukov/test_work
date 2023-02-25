@@ -3,6 +3,7 @@ package ru.patyukov.ligatestwork.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.ToString;
 
@@ -18,12 +19,15 @@ public class Employee {
     private Integer id;
 
     @NotNull
+    @Size(min = 3, message = "Минимум 3 символа.")
     private String lastname;
 
     @NotNull
+    @Size(min = 3, message = "Минимум 3 символа.")
     private String name;
 
     @NotNull
+    @Size(min = 3, message = "Минимум 3 символа.")
     private String surname;
 
     @NotNull

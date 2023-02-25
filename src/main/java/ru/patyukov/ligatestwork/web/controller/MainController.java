@@ -52,18 +52,16 @@ public class MainController {
 
     @Operation(summary = "Delete gadget")
     @DeleteMapping("/delete/gadget/gadgetid/{gadgetId}")
-    public ResponseEntity deleteGadget(@PathVariable Integer gadgetId) {
+    public void deleteGadget(@PathVariable Integer gadgetId) {
         log.info("Контроллер получил запрос на удаление гаджета с id = " + gadgetId);
         facade.deleteGadget(gadgetId);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Operation(summary = "Delete employee")
     @DeleteMapping("/delete/employee/employeeid/{employeeId}")
-    public ResponseEntity deleteEmployee(@PathVariable Integer employeeId) {
+    public void deleteEmployee(@PathVariable Integer employeeId) {
         log.info("Контроллер получил запрос на удаление работника с id = " + employeeId);
         facade.deleteEmployee(employeeId);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Operation(summary = "Update employee")
