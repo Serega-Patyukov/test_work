@@ -22,14 +22,14 @@ public class GadgetServiceImpl implements GadgetService {
     @Override
     public GadgetDto createGadget(GadgetDto gadgetDto) {
         Gadget gadget = gadgetMapper.gadgetDtoToGadget(gadgetDto);
-        log.info("Сервис получил запрос на создание гаджета: {}", gadgetDto);
+        log.info("Service. Got gadget create request. {}", gadget);
 
         Employee employee = new Employee();
         employee.setId(gadgetDto.getEmployeeId());
 
         gadget.setEmployee(employee);
         Gadget responseGadget = gadgetRepository.save(gadget);
-        log.info("Репозиторий сохранил гаджет: {}", responseGadget);
+        log.info("Service. Repository save gadget. {}", responseGadget);
         GadgetDto responseGadgetDto = gadgetMapper.gadgetToGadgetDto(responseGadget);
         responseGadgetDto.setEmployeeId(gadgetDto.getEmployeeId());
         return responseGadgetDto;
@@ -37,18 +37,18 @@ public class GadgetServiceImpl implements GadgetService {
 
     @Override
     public void deleteGadget(Integer gadgetId) {
-        log.info("Сервис получил запрос на удаление гаджета с id = " + gadgetId);
+        log.info("Service. Got gadget delete request. gadgetId = " + gadgetId);
         if (gadgetRepository.existsById(gadgetId)) {
             gadgetRepository.deleteById(gadgetId);
         } else {
-            throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
+            throw new NotFoundException("Service. Gadget not found. gadgetId = " + gadgetId);
         }
     }
 
     @Override
     public GadgetDto updateGadget(Integer gadgetId, GadgetDto gadgetDto) {
         Gadget gadget = gadgetMapper.gadgetDtoToGadget(gadgetDto);
-        log.info("Сервис получил запрос на обновление гаджета с id = " + gadgetId + " : {}", gadget);
+        log.info("Service. Got gadget update request. gadgetId = " + gadgetId + ". {}", gadget);
         if (gadgetRepository.existsById(gadgetId)) {
 
             Employee employee = new Employee();
@@ -58,18 +58,18 @@ public class GadgetServiceImpl implements GadgetService {
             gadget.setId(gadgetId);
 
             Gadget responseGadget = gadgetRepository.save(gadget);
-            log.info("Репозиторий обновил гаджет: {}", responseGadget);
+            log.info("Service. Repository update gadget. {}", responseGadget);
             GadgetDto responseGadgetDto = gadgetMapper.gadgetToGadgetDto(responseGadget);
             responseGadgetDto.setEmployeeId(gadgetDto.getEmployeeId());
             return responseGadgetDto;
         } else {
-            throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
+            throw new NotFoundException("Service. Gadget not found. gadgetId = " + gadgetId);
         }
     }
 
     @Override
     public List<GadgetDto> findAllByEmployeeId(Integer employeeId) {
-        log.info("Сервис получил запрос на получение всех гаджетов у работника с id = " + employeeId);
+        log.info("Service. Got all gadgets get request with employeeId = " + employeeId);
         List<Gadget> gadgets = gadgetRepository.findAllByEmployeeId(employeeId);
 
         List<GadgetDto> gadgetDtos = gadgets.stream()
@@ -85,20 +85,20 @@ public class GadgetServiceImpl implements GadgetService {
 
     @Override
     public GadgetDto getGadgetById(Integer gadgetId) {
-        log.info("Сервис получил запрос на получение гаджета с id = " + gadgetId);
+        log.info("Service. Got gadget get request. gadgetId = " + gadgetId);
         if (gadgetRepository.existsById(gadgetId)) {
             Gadget responseGadget = gadgetRepository.findById(gadgetId).get();
             GadgetDto responseGadgetDto = gadgetMapper.gadgetToGadgetDto(responseGadget);
             responseGadgetDto.setEmployeeId(responseGadget.getEmployee().getId());
             return responseGadgetDto;
         } else {
-            throw new NotFoundException("Гаджет с id = " + gadgetId + " не найден");
+            throw new NotFoundException("Service. Gadget not found. gadgetId = " + gadgetId);
         }
     }
 
     @Override
     public List<GadgetDto> getGadgetAll() {
-        log.info("Сервис получил запрос на получение всех гаджетов");
+        log.info("Service. Got all gadgets get request");
         List<Gadget> gadgets = gadgetRepository.findAll();
 
         List<GadgetDto> gadgetDtos = gadgets.stream()
