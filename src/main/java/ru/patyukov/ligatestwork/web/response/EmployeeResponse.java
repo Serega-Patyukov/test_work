@@ -10,7 +10,7 @@ public class EmployeeResponse {
     private Integer id;
     private String lastname;
     private String name;
-    private String surname;
+    private String secondname;
     private String phone;
     private String email;
     private List<GadgetResponse> gadgets = new ArrayList<>();

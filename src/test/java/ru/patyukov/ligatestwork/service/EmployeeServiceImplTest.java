@@ -41,7 +41,7 @@ class EmployeeServiceImplTest {
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("name");
         employeeDto.setLastname("lastname");
-        employeeDto.setSurname("surname");
+        employeeDto.setSecondname("surname");
         employeeDto.setEmail("serega-patyukov@mail.ru");
         employeeDto.setPhone("89009553902");
 
@@ -49,7 +49,7 @@ class EmployeeServiceImplTest {
         employee.setId(1);
         employee.setName("name");
         employee.setLastname("lastname");
-        employee.setSurname("surname");
+        employee.setSecondname("surname");
         employee.setEmail("serega-patyukov@mail.ru");
         employee.setPhone("89009553902");
 
@@ -57,7 +57,7 @@ class EmployeeServiceImplTest {
         responseEmployeeDto.setId(1);
         responseEmployeeDto.setName("name");
         responseEmployeeDto.setLastname("lastname");
-        responseEmployeeDto.setSurname("surname");
+        responseEmployeeDto.setSecondname("surname");
         responseEmployeeDto.setEmail("serega-patyukov@mail.ru");
         responseEmployeeDto.setPhone("89009553902");
 
@@ -149,7 +149,7 @@ class EmployeeServiceImplTest {
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("name");
         employeeDto.setLastname("lastname");
-        employeeDto.setSurname("surname");
+        employeeDto.setSecondname("surname");
         employeeDto.setEmail("serega-patyukov@mail.ru");
         employeeDto.setPhone("89009553902");
 
@@ -157,7 +157,7 @@ class EmployeeServiceImplTest {
         employee.setId(1);
         employee.setName("name");
         employee.setLastname("lastname");
-        employee.setSurname("surname");
+        employee.setSecondname("surname");
         employee.setEmail("serega-patyukov@mail.ru");
         employee.setPhone("89009553902");
 
@@ -165,7 +165,7 @@ class EmployeeServiceImplTest {
         responseEmployeeDto.setId(1);
         responseEmployeeDto.setName("name");
         responseEmployeeDto.setLastname("lastname");
-        responseEmployeeDto.setSurname("surname");
+        responseEmployeeDto.setSecondname("surname");
         responseEmployeeDto.setEmail("serega-patyukov@mail.ru");
         responseEmployeeDto.setPhone("89009553902");
 
@@ -192,14 +192,14 @@ class EmployeeServiceImplTest {
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("name");
         employeeDto.setLastname("lastname");
-        employeeDto.setSurname("surname");
+        employeeDto.setSecondname("surname");
         employeeDto.setEmail("serega-patyukov@mail.ru");
         employeeDto.setPhone("89009553902");
 
         Employee employee = new Employee();
         employee.setName("name");
         employee.setLastname("lastname");
-        employee.setSurname("surname");
+        employee.setSecondname("surname");
         employee.setEmail("serega-patyukov@mail.ru");
         employee.setPhone("89009553902");
 
@@ -225,7 +225,7 @@ class EmployeeServiceImplTest {
         employee.setId(1);
         employee.setName("name");
         employee.setLastname("lastname");
-        employee.setSurname("surname");
+        employee.setSecondname("surname");
         employee.setEmail("serega-patyukov@mail.ru");
         employee.setPhone("89009553902");
 
@@ -233,7 +233,7 @@ class EmployeeServiceImplTest {
         responseEmployeeDto.setId(1);
         responseEmployeeDto.setName("name");
         responseEmployeeDto.setLastname("lastname");
-        responseEmployeeDto.setSurname("surname");
+        responseEmployeeDto.setSecondname("surname");
         responseEmployeeDto.setEmail("serega-patyukov@mail.ru");
         responseEmployeeDto.setPhone("89009553902");
 
@@ -273,7 +273,7 @@ class EmployeeServiceImplTest {
         employee.setId(1);
         employee.setName("name");
         employee.setLastname("lastname");
-        employee.setSurname("surname");
+        employee.setSecondname("surname");
         employee.setEmail("serega-patyukov@mail.ru");
         employee.setPhone("89009553902");
 
@@ -281,7 +281,7 @@ class EmployeeServiceImplTest {
         responseEmployeeDto.setId(1);
         responseEmployeeDto.setName("name");
         responseEmployeeDto.setLastname("lastname");
-        responseEmployeeDto.setSurname("surname");
+        responseEmployeeDto.setSecondname("surname");
         responseEmployeeDto.setEmail("serega-patyukov@mail.ru");
         responseEmployeeDto.setPhone("89009553902");
 

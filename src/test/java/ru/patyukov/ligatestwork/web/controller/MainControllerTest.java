@@ -41,7 +41,7 @@ class MainControllerTest {
         employeeRequest.setName("name2");
         employeeRequest.setPhone("89009553902");
         employeeRequest.setLastname("lastname2");
-        employeeRequest.setSurname("surname2");
+        employeeRequest.setSecondname("secondname2");
 
         EmployeeResponse employeeResponse2 = new EmployeeResponse();
         employeeResponse2.setId(2);
@@ -49,7 +49,7 @@ class MainControllerTest {
         employeeResponse2.setName("name2");
         employeeResponse2.setPhone("89009553902");
         employeeResponse2.setLastname("lastname2");
-        employeeResponse2.setSurname("surname2");
+        employeeResponse2.setSecondname("secondname2");
 
         //when
 
@@ -62,7 +62,7 @@ class MainControllerTest {
                         .content("{\n" +
                         "    \"lastname\" : \"lastname2\",\n" +
                         "    \"name\" : \"name2\",\n" +
-                        "    \"surname\" : \"surname2\",\n" +
+                        "    \"secondname\" : \"secondname2\",\n" +
                         "    \"phone\" : \"89009553902\",\n" +
                         "    \"email\" : \"serega-patyukov@mail.ru\"\n" +
                         "}"))
@@ -71,7 +71,7 @@ class MainControllerTest {
                         "    \"id\": 2,\n" +
                         "    \"lastname\": \"lastname2\",\n" +
                         "    \"name\": \"name2\",\n" +
-                        "    \"surname\": \"surname2\",\n" +
+                        "    \"secondname\": \"secondname2\",\n" +
                         "    \"phone\": \"89009553902\",\n" +
                         "    \"email\": \"serega-patyukov@mail.ru\",\n" +
                         "    \"gadgets\": []\n" +
@@ -174,7 +174,7 @@ class MainControllerTest {
         employeeRequest.setName("name2");
         employeeRequest.setPhone("89009553902");
         employeeRequest.setLastname("lastname2");
-        employeeRequest.setSurname("surname2");
+        employeeRequest.setSecondname("surname2");
 
         EmployeeResponse employeeResponse2 = new EmployeeResponse();
         employeeResponse2.setId(2);
@@ -182,7 +182,7 @@ class MainControllerTest {
         employeeResponse2.setName("name2");
         employeeResponse2.setPhone("89009553902");
         employeeResponse2.setLastname("lastname2");
-        employeeResponse2.setSurname("surname2");
+        employeeResponse2.setSecondname("surname2");
 
         //when
 
@@ -195,7 +195,7 @@ class MainControllerTest {
                         .content("{\n" +
                                 "    \"lastname\" : \"lastname2\",\n" +
                                 "    \"name\" : \"name2\",\n" +
-                                "    \"surname\" : \"surname2\",\n" +
+                                "    \"secondname\" : \"surname2\",\n" +
                                 "    \"phone\" : \"89009553902\",\n" +
                                 "    \"email\" : \"serega-patyukov@mail.ru\"\n" +
                                 "}"))
@@ -204,7 +204,7 @@ class MainControllerTest {
                         "    \"id\": 2,\n" +
                         "    \"lastname\": \"lastname2\",\n" +
                         "    \"name\": \"name2\",\n" +
-                        "    \"surname\": \"surname2\",\n" +
+                        "    \"secondname\": \"surname2\",\n" +
                         "    \"phone\": \"89009553902\",\n" +
                         "    \"email\": \"serega-patyukov@mail.ru\",\n" +
                         "    \"gadgets\": []\n" +
@@ -279,7 +279,7 @@ class MainControllerTest {
         employeeResponse.setName("name");
         employeeResponse.setPhone("89009553902");
         employeeResponse.setLastname("lastname");
-        employeeResponse.setSurname("surname");
+        employeeResponse.setSecondname("secondname");
 
         //when
 
@@ -293,7 +293,7 @@ class MainControllerTest {
                         "    \"id\": 1,\n" +
                         "    \"lastname\": \"lastname\",\n" +
                         "    \"name\": \"name\",\n" +
-                        "    \"surname\": \"surname\",\n" +
+                        "    \"secondname\": \"secondname\",\n" +
                         "    \"phone\": \"89009553902\",\n" +
                         "    \"email\": \"serega-patyukov@mail.ru\",\n" +
                         "    \"gadgets\": []\n" +
@@ -321,7 +321,7 @@ class MainControllerTest {
         employeeResponse1.setName("name");
         employeeResponse1.setPhone("89009553902");
         employeeResponse1.setLastname("lastname");
-        employeeResponse1.setSurname("surname");
+        employeeResponse1.setSecondname("secondname");
         employeeResponse1.getGadgets().add(gadgetResponse);
 
         EmployeeResponse employeeResponse2 = new EmployeeResponse();
@@ -330,7 +330,7 @@ class MainControllerTest {
         employeeResponse2.setName("name2");
         employeeResponse2.setPhone("89009553902");
         employeeResponse2.setLastname("lastname2");
-        employeeResponse2.setSurname("surname2");
+        employeeResponse2.setSecondname("secondname2");
 
         //when
 
@@ -345,7 +345,7 @@ class MainControllerTest {
                         "        \"id\": 1,\n" +
                         "        \"lastname\": \"lastname\",\n" +
                         "        \"name\": \"name\",\n" +
-                        "        \"surname\": \"surname\",\n" +
+                        "        \"secondname\": \"secondname\",\n" +
                         "        \"phone\": \"89009553902\",\n" +
                         "        \"email\": \"serega-patyukov@mail.ru\",\n" +
                         "        \"gadgets\": [\n" +
@@ -365,7 +365,7 @@ class MainControllerTest {
                         "        \"id\": 2,\n" +
                         "        \"lastname\": \"lastname2\",\n" +
                         "        \"name\": \"name2\",\n" +
-                        "        \"surname\": \"surname2\",\n" +
+                        "        \"secondname\": \"secondname2\",\n" +
                         "        \"phone\": \"89009553902\",\n" +
                         "        \"email\": \"serega-patyukov@mail.ru\",\n" +
                         "        \"gadgets\": []\n" +

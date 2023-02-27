@@ -54,14 +54,14 @@ class FacadeImplTest {
         employeeRequest.setName("name");
         employeeRequest.setPhone("89009553902");
         employeeRequest.setLastname("lastname");
-        employeeRequest.setSurname("surname");
+        employeeRequest.setSecondname("surname");
 
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setEmail("serega-patyukov@mail.ru");
         employeeDto.setName("name");
         employeeDto.setPhone("89009553902");
         employeeDto.setLastname("lastname");
-        employeeDto.setSurname("surname");
+        employeeDto.setSecondname("surname");
 
         EmployeeDto responseEmployeeDto = new EmployeeDto();
         responseEmployeeDto.setId(1);
@@ -69,7 +69,7 @@ class FacadeImplTest {
         responseEmployeeDto.setName("name");
         responseEmployeeDto.setPhone("89009553902");
         responseEmployeeDto.setLastname("lastname");
-        responseEmployeeDto.setSurname("surname");
+        responseEmployeeDto.setSecondname("surname");
 
         EmployeeResponse employeeResponse = new EmployeeResponse();
         employeeResponse.setId(1);
@@ -77,7 +77,7 @@ class FacadeImplTest {
         employeeResponse.setName("name");
         employeeResponse.setPhone("89009553902");
         employeeResponse.setLastname("lastname");
-        employeeResponse.setSurname("surname");
+        employeeResponse.setSecondname("surname");
 
         //when
 
@@ -230,14 +230,14 @@ class FacadeImplTest {
         employeeRequest.setName("name");
         employeeRequest.setPhone("89009553902");
         employeeRequest.setLastname("lastname");
-        employeeRequest.setSurname("surname");
+        employeeRequest.setSecondname("surname");
 
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setEmail("serega-patyukov@mail.ru");
         employeeDto.setName("name");
         employeeDto.setPhone("89009553902");
         employeeDto.setLastname("lastname");
-        employeeDto.setSurname("surname");
+        employeeDto.setSecondname("surname");
 
         EmployeeDto responseEmployeeDto = new EmployeeDto();
         responseEmployeeDto.setId(1);
@@ -245,7 +245,7 @@ class FacadeImplTest {
         responseEmployeeDto.setName("name");
         responseEmployeeDto.setPhone("89009553902");
         responseEmployeeDto.setLastname("lastname");
-        responseEmployeeDto.setSurname("surname");
+        responseEmployeeDto.setSecondname("surname");
 
         EmployeeResponse employeeResponse = new EmployeeResponse();
         employeeResponse.setId(1);
@@ -253,7 +253,7 @@ class FacadeImplTest {
         employeeResponse.setName("name");
         employeeResponse.setPhone("89009553902");
         employeeResponse.setLastname("lastname");
-        employeeResponse.setSurname("surname");
+        employeeResponse.setSecondname("surname");
 
         //when
 
@@ -402,7 +402,7 @@ class FacadeImplTest {
         responseEmployeeDto.setName("name");
         responseEmployeeDto.setPhone("89009553902");
         responseEmployeeDto.setLastname("lastname");
-        responseEmployeeDto.setSurname("surname");
+        responseEmployeeDto.setSecondname("surname");
 
         EmployeeResponse employeeResponse = new EmployeeResponse();
         employeeResponse.setId(1);
@@ -410,7 +410,7 @@ class FacadeImplTest {
         employeeResponse.setName("name");
         employeeResponse.setPhone("89009553902");
         employeeResponse.setLastname("lastname");
-        employeeResponse.setSurname("surname");
+        employeeResponse.setSecondname("surname");
         employeeResponse.setGadgets(List.of(gadgetResponse));
 
         //when
@@ -457,7 +457,7 @@ class FacadeImplTest {
         employeeDto.setName("name");
         employeeDto.setPhone("89009553902");
         employeeDto.setLastname("lastname");
-        employeeDto.setSurname("surname");
+        employeeDto.setSecondname("surname");
 
         EmployeeResponse employeeResponse = new EmployeeResponse();
         employeeResponse.setId(1);
@@ -465,7 +465,7 @@ class FacadeImplTest {
         employeeResponse.setName("name");
         employeeResponse.setPhone("89009553902");
         employeeResponse.setLastname("lastname");
-        employeeResponse.setSurname("surname");
+        employeeResponse.setSecondname("surname");
         employeeResponse.setGadgets(List.of(gadgetResponse));
 
         //when

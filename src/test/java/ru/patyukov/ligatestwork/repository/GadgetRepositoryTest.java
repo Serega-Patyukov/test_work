@@ -29,7 +29,7 @@ class GadgetRepositoryTest {
         Employee employee = new Employee();
         employee.setName("name");
         employee.setLastname("lastname");
-        employee.setSurname("surname");
+        employee.setSecondname("surname");
         employee.setEmail("serega-patyukov@mail.ru");
         employee.setPhone("89009553902");
 
